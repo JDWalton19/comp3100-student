@@ -7,7 +7,7 @@
 | **To** | The Apprentice Cohort of 1851, at their benches |
 | **From** | By hand of **Chief Enginewright B. Marlowe** |
 | **Dated** | Monday, 31 August 1851 — fourteen weeks to the Exhibition |
-| **Due** | **Friday, September 4, 11:59 pm** — `logbook.md` + `case-notes.md` on Canvas |
+| **Due** | **Sunday, September 6, 11:59 pm** — `logbook.md` + `case-notes.md` on Canvas |
 
 ---
 
@@ -1126,7 +1126,7 @@ here than polished and borrowed.
 
 ## Turn it in
 
-Due **Friday, September 4, 11:59 pm**, on **Canvas** (per
+Due **Sunday, September 6, 11:59 pm**, on **Canvas** (per
 [`syllabus/schedule.md`](../../syllabus/schedule.md)):
 
 1. **`logbook.md`** — all three milestones: what you did, the seal
@@ -1149,7 +1149,7 @@ Enginehouse*** (zyBooks 12.1, "Mr. Kureos") is due **Friday,
 September 18** — eighteen days out, and the sort of thing that is
 pleasant in September and grim in the small hours of the 18th.
 
-> `SUBMISSION: EXPECTED BY FRIDAY 11:59 PM.`
+> `SUBMISSION: EXPECTED BY SUNDAY 11:59 PM.`
 > `WAX SEALS: THREE. ADMIRED.`
 > `JOBS WITHOUT PAPERWORK: DISAPPROVED OF.`
 > — punched chit, affixed by Porter Brassfeather
