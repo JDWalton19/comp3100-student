@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/johnderrickwalton/comp3100-student/labs/week-03/starter",
+      "program": "/Users/johnderrickwalton/comp3100-student/labs/week-03/starter/build/Debug/outDebug"
+    }
+  ]
+}
