@@ -11,8 +11,10 @@ A1:Z, collected with waitpid()
 # A2 (Task 3) -- the line in the running job's environment that names a
 # patron. Copy it exactly as `tr '\0' '\n' < /proc/<pid>/environ` gave it,
 # including the value.
-A2:
+A2: PATRON=E.K.
 
 # A3 (Task 3) -- the number on the PPid line of that job's
 # /proc/<pid>/status. Just the number.
-A3:
+A3: 1
+
+

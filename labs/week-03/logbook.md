@@ -23,7 +23,7 @@ make -C check m1
 ``` ~~~ WAX SEAL of the Guild: BA055E04 ~~~
 ```
 **What it means:**
-
+we put code in a c program that let it run just once in instead twice. and added more code to give us more detail what it running.
 ## Milestone 2
 **What I did:**
  make -C check m2
@@ -31,26 +31,31 @@ make -C check m1
 ```~~~ WAX SEAL of the Guild: BBDB3293 ~~~
 ```
 **What it means:**
-
+ we got the zombie id and ran or kill the zombie bedfore we where kill or ran awa form us.
 ## Milestone 3
 **What I did:**
-
+ make -C check m3
 **Output or seal:**
-```
+```  ~~~ WAX SEAL of the Guild: CC62BF35 ~~~
+
 ```
 **What it means:**
-
+this where we ran command it more like the zombie program and find ppid and the patran 
 > Fewer or more milestones this week? Copy a block above as needed.
 
 ## Reflection
 
 1. **(Prompt 1 from the work order):**
+that the spillit proccess creation into a fork and execvp() give the shell awindow of time between creating the copy and starting rhe new pprogram that you making in  that gap the shell can safely  set up input and output redirtction (likr pipes or moving file around) for the child proccess a single combined command call would hide everything  inside a clack cox leaving no opportunity for the shell to make thos adjustment before hand 
 2. **(Prompt 2 from the work order):**
-
+a  zoblie proccess haa finish running but its parent hasnt collected its exit status yet.
+a zombie only hold a single entry (a row) in the kernal proccess table it use no memory or cpu time
+it clear in it parent call in the wait or waitpid
+one not bad it when spawn in thousand it can couse to many problem. it can fill up the table.
 ## Sources and help
 
-Anyone or anything that helped you this week — a classmate, a man page,
-a Stack Overflow answer, an AI assistant. One line each: who or what,
+Anyone or anything that helped you this week — a classmate, a man page, matthew mahan 
+a Stack Overflow answer, an AI assistant. One line each: who or what, g
 and what you used it for. This is **not graded and never costs points**;
 it is the habit professional engineers keep, and the syllabus asks for
 it under *Academic integrity* and *Use of AI tools*.
@@ -62,5 +67,5 @@ it under *Academic integrity* and *Use of AI tools*.
 
 ## Time spent
 
-Roughly how long this took, start to finish: _______ hours
+Roughly how long this took, start to finish: 2 hours
 *No wrong answer — this just helps calibrate future work orders.*
