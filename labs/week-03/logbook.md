@@ -26,9 +26,9 @@ make -C check m1
 
 ## Milestone 2
 **What I did:**
-
+ make -C check m2
 **Output or seal:**
-```
+```~~~ WAX SEAL of the Guild: BBDB3293 ~~~
 ```
 **What it means:**
 
