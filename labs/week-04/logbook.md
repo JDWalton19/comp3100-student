@@ -12,23 +12,25 @@ means" — *I got the seal but I'm still fuzzy on why the second run
 differed* — beats a confident sentence you don't believe, and it tells
 me where to start when you bring it to studio.
 
-**Name:**
-**Week:**
+**Name:**JD Walton
+**Week:**4 
 **Work Order No.:**
-
+4
 ## Milestone 1
 **What I did:**
-
+make -C check m1
 **Output or seal:**
-```
+```  ~~~ WAX SEAL of the Guild: E9891F11 ~~~
 ```
 **What it means:**
 
 ## Milestone 2
 **What I did:**
+ make -C check m2
 
 **Output or seal:**
-```
+```  ~~~ WAX SEAL of the Guild: D3EB0E13 ~~~
+
 ```
 **What it means:**
 

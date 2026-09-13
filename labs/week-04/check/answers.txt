@@ -12,12 +12,12 @@ loom south:     4118 lines/sec   (courtesy 19)
 
 # A2 (Task 2) -- the worst starved rate a loom reported during the drill.
 # The number, with its unit if you like.
-A2:
+A2: 0
 
 # A3 (Task 2) -- the first two numbers of the schedule on the line you
 # struck out: which one is the minute, which one is the hour, and what
 # time of day they name together. One line.
-A3:
+A3: 14 is the minute, 15 is the hour, 15:14
 
 # A4 (Task 3) -- the "current scheduling policy" line printed inside the
 # real-time demo, copied exactly.
