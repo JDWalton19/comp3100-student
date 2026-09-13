@@ -21,8 +21,10 @@ A3: 14 is the minute, 15 is the hour, 15:14
 
 # A4 (Task 3) -- the "current scheduling policy" line printed inside the
 # real-time demo, copied exactly.
-A4:
+A4:pid 41604's current scheduling policy: SCHED_FIFO
+pid 41604's current scheduling priority: 50
+
 
 # A5 (Task 3) -- one settled rate line from the governed loom, copied
 # exactly as printed.
-A5:
+A5:loom governed:    865 lines/sec   (courtesy 0)
