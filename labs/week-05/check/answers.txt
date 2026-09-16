@@ -18,7 +18,7 @@ A1: north 200000, south 200000
 A2: 288531 236924 
 
 # A3 (Task 2) -- the "ledger total" your GUARDED build printed. One number.
-A3:
+A3: 400000
 
 # A4 (Task 3) -- the two row labels that differ between the Engine's Table IX
 # and the fair copy. A row's label is the words before the row of dots.
