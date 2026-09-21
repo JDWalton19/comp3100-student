@@ -23,8 +23,7 @@ A3: 400000
 # A4 (Task 3) -- the two row labels that differ between the Engine's Table IX
 # and the fair copy. A row's label is the words before the row of dots.
 # Both labels on this one line, spelled as the ledger prints them.
-A4: computed loss, million gallons
-district balance, pounds
+A4: computed loss, million gallons district balance, pounds
 
 # A5 (Task 3) -- the total you worked out yourself from the four district
 # figures in the working papers, added exactly as the papers write them.
@@ -35,4 +34,4 @@ district balance, pounds
 #   rounded figure is a separate number and it belongs in your logbook.
 #
 # The figure only, e.g. 123.456
-A5: .517 214.86
+A5: 214.060
