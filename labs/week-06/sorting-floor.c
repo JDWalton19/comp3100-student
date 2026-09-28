@@ -1,20 +1,6 @@
-/*
- * Punched cards //come off the presses, go down a chute, and are taken off
- * the bottom by the sorters. The chute holds eight cards. That is not a
- * house preference; it is how many cards fit in the chute.
- *
- * Four presses tip cards in. Two sorters reach in and take them out. A
- * press does glance at the chute before it tips -- and then tips anyway,
- * because glancing is not the same as waiting. No sorter waits for there
- * to be anything to take, either.
- *
- * Every card carries a serial, and at the end the floor tallies which
- * serials came out the other side and how many times each. Forty
- * thousand cards go in. Both tallies ought to be extremely dull.
- */
 #include <stdio.h>
 #include <pthread.h>
-#include <semaphore.h>
+
 #define CHUTE      8       /* cards the chute holds. Eight. */
 #define PRESSES    4
 #define SORTERS    2
@@ -23,17 +9,10 @@
 
 /* The chute. A slot holding 0 has nothing in it. */
 static long chute[CHUTE];
-/* Room left in the chute, and cards waiting in it. */
-static sem_t room;
-static sem_t cards_waiting;
-
-/* The chute's counters are shared; a semaphore does not guard them. */
-static pthread_mutex_t chute_guard = PTHREAD_MUTEX_INITIALIZER;
 
 /* The deepest the chute ever got. */
 static long high_water = 0;
-/* Where the next card goes in, and where the next card comes out.
- * Both counters are read and written by everyone on the floor. */
+/* Where the next card goes in, and where the next card comes out. */
 static long tipped_in  = 0;
 static long taken_out  = 0;
 
@@ -41,8 +20,7 @@ static int  presses_done = 0;   /* the shift bell, such as it is */
 static long tipped_onto_full = 0;
 static long reached_into_empty = 0;
 
-/* What each sorter carried away, kept apart so the two of them are not
- * also fighting over the tally. */
+/* What each sorter carried away */
 static long carried[SORTERS][TOTAL];
 
 struct press_hand {
@@ -58,32 +36,22 @@ struct sorting_desk {
 
 static void *run_the_press(void *arg)
 {
-
     struct press_hand *p = arg;
     long i;
 
     for (i = 0; i < PER_PRESS; i++) {
         long serial = (long)p->number * PER_PRESS + i + 1;
 
+        /* Glances at a full chute and tips anyway */
         if (tipped_in - taken_out >= CHUTE)
             tipped_onto_full++;
 
         chute[tipped_in % CHUTE] = serial;
         tipped_in++;
-        p->tipped++;
-        sem_wait(&room);
-        pthread_mutex_lock(&chute_guard);
 
-        if (tipped_in - taken_out >= CHUTE)
-            tipped_onto_full++;
-
-        chute[tipped_in % CHUTE] = serial;
-        tipped_in++;
         if (tipped_in - taken_out > high_water)
             high_water = tipped_in - taken_out;
 
-        pthread_mutex_unlock(&chute_guard);
-        sem_post(&cards_waiting);
         p->tipped++;
     }
     return NULL;
@@ -91,27 +59,20 @@ static void *run_the_press(void *arg)
 
 static void *work_the_desk(void *arg)
 {
-       struct sorting_desk *d = arg;
+    struct sorting_desk *d = arg;
 
     for (;;) {
         long slot, card;
 
-        sem_wait(&cards_waiting);
-                pthread_mutex_lock(&chute_guard);
-
-        if (taken_out >= tipped_in) {
-            /* The shift bell, not a card. */
-            pthread_mutex_unlock(&chute_guard);
+        /* Exit if shift is over and all known cards are taken */
+        if (presses_done && taken_out >= tipped_in)
             break;
-        }
 
+        /* Reaches into an empty slot without waiting! */
         slot = taken_out;
         card = chute[slot % CHUTE];
         chute[slot % CHUTE] = 0;
         taken_out = slot + 1;
-
-        pthread_mutex_unlock(&chute_guard);
-        sem_post(&room);
 
         if (card == 0)
             reached_into_empty++;
@@ -123,10 +84,10 @@ static void *work_the_desk(void *arg)
 
 int main(void)
 {
-    static int came_out[TOTAL];   /* times each serial reached a sorter */
+    static int came_out[TOTAL];
     struct press_hand press[PRESSES];
     struct sorting_desk desk[SORTERS];
-   pthread_t press_thread[PRESSES], desk_thread[SORTERS];
+    pthread_t press_thread[PRESSES], desk_thread[SORTERS];
     long tipped = 0, carried_off = 0, never = 0, twice = 0;
     long i;
     int p, s;
@@ -142,9 +103,9 @@ int main(void)
             fprintf(stderr, "sorting-floor: sorter %d would not come on duty\n", s + 1);
             return 1;
         }
-   }
+    }
 
-   for (p = 0; p < PRESSES; p++) {
+    for (p = 0; p < PRESSES; p++) {
         press[p].number = p;
         press[p].tipped = 0;
         if (pthread_create(&press_thread[p], NULL, run_the_press, &press[p]) != 0) {
@@ -156,11 +117,7 @@ int main(void)
     for (p = 0; p < PRESSES; p++)
         pthread_join(press_thread[p], NULL);
 
-    /* --- ADD THESE LINES HERE --- */
     presses_done = 1;
-    for (s = 0; s < SORTERS; s++)
-        sem_post(&cards_waiting);   /* wake up sorters so they can exit */
-    /* ---------------------------- */
 
     for (s = 0; s < SORTERS; s++)
         pthread_join(desk_thread[s], NULL);
@@ -184,15 +141,12 @@ int main(void)
             twice++;
     }
 
-    for (s = 0; s < SORTERS; s++)
-        pthread_join(desk_thread[s], NULL);
-
     for (s = 0; s < SORTERS; s++) {
         printf("  sorter %d carried away %ld cards\n", desk[s].number, desk[s].count);
     }
 
     printf("\n");
-       printf("  deepest the chute ever got: %ld\n", high_water);
+    printf("  deepest the chute ever got: %ld\n", high_water);
     printf("  cards tipped in: %ld\n", tipped);
     printf("  cards carried away: %ld\n", carried_off);
     printf("  serials that never came out: %ld\n", never);

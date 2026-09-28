@@ -1,4 +1,4 @@
-# Work Order No. 1851-06 -- bench answers. Fill in after each colon.
+ # Work Order No. 1851-06 -- bench answers. Fill in after each colon.
 # Copy me first, from labs/week-06:   cp check/answers-template check/answers.txt
 # The seal checks (make -C check m1 ... m5) read check/answers.txt -- this
 # template stays untouched. Lines starting with # are notes, not answers.
@@ -23,18 +23,18 @@ A1:120000 0 0
 
 # A2 (Task 2) -- the "deepest the chute ever got" figure from your FIXED
 # sorting-floor run. One number.
-A2:
+A2: 8
 
 # A3 (Task 2) -- two numbers from the same run, on this one line:
 # "cards tipped in" and "cards carried away". They must be equal; if they
 # are not, the floor is not fixed yet and the answer file is not the place
 # to settle it.
-A3:2962382 15010285
+A3:40000 40000
 
 # A4 (Task 3) -- two numbers from your FIXED ledger-hall run, on this one
 # line: "pages read" and "pages that did not balance". The second one is
 # the result.
-A4:20000
+A4:1200000 0
 
 # A5 (Task 4) -- from the STALLED run, before your fix: all five
 # philosophers by name, and for each one, the fork they were holding and
@@ -42,7 +42,7 @@ A4:20000
 # a long line; that is expected.
 #
 #   e.g. NAME holds fork N and waits for fork N (held by NAME), NAME ...
-A5:
+A5: Aurelia holds fork 0 and waits for fork 1 (held by Bramwell), Bramwell holds fork 1 and waits for fork 2 (held by Cordelia), Cordelia holds fork 2 and waits for fork 3 (held by Desmond), Desmond holds fork 3 and waits for fork 4 (held by Eustace), Eustace holds fork 4 and waits for fork 0 (held by Aurelia).
 
 # A6 (Task 4) -- ONE SENTENCE stating the rule you applied to break the
 # ring. The rule, not the diff -- a sentence somebody could follow without
@@ -51,7 +51,7 @@ A5:
 #   Name the thing that gets taken in order -- the forks at this table, or
 #   locks in general -- and say what your rule does to that order. Saying it
 #   in general terms is the better answer here, not a worse one.
-A6:
+A6:To prevent a circular wait, assign a strict global numbering order to all locks and require that every thread must always acquire multiple locks in that exact numerical order (from lowest to highest)
 
 # A7 (Task 5) -- two things on this one line:
 #   * the uid from the lock record, as a numeral;
