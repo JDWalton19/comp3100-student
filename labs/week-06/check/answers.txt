@@ -61,4 +61,5 @@ A6:To prevent a circular wait, assign a strict global numbering order to all loc
 #
 # The account's NAME is not asked for and does not belong here. What you
 # make of it goes in your own case notes.
-A7:
+A7: 1849: Computing Room corps, pending archive transfer
+

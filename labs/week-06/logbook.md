@@ -48,7 +48,12 @@ make -C check m4
   ~~~ WAX SEAL of the Guild: F4BE746C ~~~
 lang table and we see how and who  to fork it
 
+5
 
+ make -C check m5
+
+  ~~~ WAX SEAL of the Guild: 2A5CA4EF ~~~
+we found the uid and the light house 
 We secured the ledger hall simulation by implementing a writer-preferring reader-writer lock to guarantee accurate data reads without starving the updating thread.
 impleneteinf a semaphone and muteax to a sorting floor and appleied reader
 > Fewer or more milestones this week? Copy a block above as needed.
@@ -74,5 +79,5 @@ matthew mahn
 
 ## Time spent
 
-Roughly how long this took, start to finish: _______ hours
+Roughly how long this took, start to finish: 4 hours
 *No wrong answer — this just helps calibrate future work orders.*
