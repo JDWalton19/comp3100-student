@@ -29,7 +29,7 @@ A2:
 # "cards tipped in" and "cards carried away". They must be equal; if they
 # are not, the floor is not fixed yet and the answer file is not the place
 # to settle it.
-A3:
+A3:2962382 15010285
 
 # A4 (Task 3) -- two numbers from your FIXED ledger-hall run, on this one
 # line: "pages read" and "pages that did not balance". The second one is
