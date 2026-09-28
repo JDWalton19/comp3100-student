@@ -34,7 +34,7 @@ A3:2962382 15010285
 # A4 (Task 3) -- two numbers from your FIXED ledger-hall run, on this one
 # line: "pages read" and "pages that did not balance". The second one is
 # the result.
-A4:
+A4:20000
 
 # A5 (Task 4) -- from the STALLED run, before your fix: all five
 # philosophers by name, and for each one, the fork they were holding and
