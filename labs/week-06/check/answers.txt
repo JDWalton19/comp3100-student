@@ -19,7 +19,7 @@
 # (Your idle-look figure is NOT wanted here. It varies by orders of
 # magnitude between benches and there is nothing to check it against. It
 # goes in your logbook, with a sentence saying it is yours alone.)
-A1:
+A1:120000 0 0
 
 # A2 (Task 2) -- the "deepest the chute ever got" figure from your FIXED
 # sorting-floor run. One number.

@@ -15,7 +15,7 @@
  */
 #include <stdio.h>
 #include <pthread.h>
-
+#include <semaphore.h>
 #define CHUTE      8       /* cards the chute holds. Eight. */
 #define PRESSES    4
 #define SORTERS    2
@@ -24,7 +24,15 @@
 
 /* The chute. A slot holding 0 has nothing in it. */
 static long chute[CHUTE];
+/* Room left in the chute, and cards waiting in it. */
+static sem_t room;
+static sem_t cards_waiting;
 
+/* The chute's counters are shared; a semaphore does not guard them. */
+static pthread_mutex_t chute_guard = PTHREAD_MUTEX_INITIALIZER;
+
+/* The deepest the chute ever got. */
+static long high_water = 0;
 /* Where the next card goes in, and where the next card comes out.
  * Both counters are read and written by everyone on the floor. */
 static long tipped_in  = 0;
@@ -51,6 +59,7 @@ struct sorting_desk {
 
 static void *run_the_press(void *arg)
 {
+
     struct press_hand *p = arg;
     long i;
 
@@ -63,34 +72,52 @@ static void *run_the_press(void *arg)
         chute[tipped_in % CHUTE] = serial;
         tipped_in++;
         p->tipped++;
+        sem_wait(&room);
+        pthread_mutex_lock(&chute_guard);
+
+        if (tipped_in - taken_out >= CHUTE)
+            tipped_onto_full++;
+
+        chute[tipped_in % CHUTE] = serial;
+        tipped_in++;
+        if (tipped_in - taken_out > high_water)
+            high_water = tipped_in - taken_out;
+
+        pthread_mutex_unlock(&chute_guard);
+        sem_post(&cards_waiting);
+        p->tipped++;
     }
     return NULL;
 }
 
 static void *work_the_desk(void *arg)
 {
-    struct sorting_desk *d = arg;
-    long empty_reaches = 0;
+       struct sorting_desk *d = arg;
 
     for (;;) {
-        if (taken_out < tipped_in) {
-            long slot = taken_out;
-            long card = chute[slot % CHUTE];
+        long slot, card;
 
-            chute[slot % CHUTE] = 0;   /* the slot is empty now; he has the card */
-            taken_out = slot + 1;
+        sem_wait(&cards_waiting);
+        pthread_mutex_lock(&chute_guard);
 
-            if (card == 0)
-                reached_into_empty++;
-            else if (d->count < TOTAL)
-                d->carried[d->count++] = card;
-
-            empty_reaches = 0;
-        } else {
-            /* Nothing there. Reach again. */
-            if (presses_done && ++empty_reaches > 200000)
-                break;
+        if (taken_out >= tipped_in) {
+            /* The shift bell, not a card. */
+            pthread_mutex_unlock(&chute_guard);
+            break;
         }
+
+        slot = taken_out;
+        card = chute[slot % CHUTE];
+        chute[slot % CHUTE] = 0;
+        taken_out = slot + 1;
+
+        pthread_mutex_unlock(&chute_guard);
+        sem_post(&room);
+
+        if (card == 0)
+            reached_into_empty++;
+        else if (d->count < TOTAL)
+            d->carried[d->count++] = card;
     }
     return NULL;
 }
@@ -100,7 +127,7 @@ int main(void)
     static int came_out[TOTAL];   /* times each serial reached a sorter */
     struct press_hand press[PRESSES];
     struct sorting_desk desk[SORTERS];
-    pthread_t press_thread[PRESSES], desk_thread[SORTERS];
+   pthread_t press_thread[PRESSES], desk_thread[SORTERS];
     long tipped = 0, carried_off = 0, never = 0, twice = 0;
     long i;
     int p, s;
@@ -153,6 +180,19 @@ int main(void)
     }
 
     for (s = 0; s < SORTERS; s++)
+
+
+    sem_init(&room, 0, CHUTE);
+    sem_init(&cards_waiting, 0, 0);
+    presses_done = 1;
+    for (s = 0; s < SORTERS; s++)
+        pthread_join(desk_thread[s], NULL);
+    presses_done = 1;
+    for (s = 0; s < SORTERS; s++)
+        sem_post(&cards_waiting);   /* the shift bell, one per desk */
+    for (s = 0; s < SORTERS; s++)
+        pthread_join(desk_thread[s], NULL);
+    printf("  deepest the chute ever got: %ld\n", high_water);
         printf("  sorter %d carried away %ld cards\n", desk[s].number, desk[s].count);
 
     printf("\n");

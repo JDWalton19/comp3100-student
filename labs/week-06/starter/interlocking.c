@@ -38,7 +38,7 @@
  * four gatemen write it, and nothing at all stands between them. */
 static int line_taken = 0;
 static pthread_mutex_t frame_guard = PTHREAD_MUTEX_INITIALIZER;
-
+static pthread_cond_t lever_free = PTHREAD_COND_INITIALIZER;
 /* The day-book: one line, rewritten for every train, saying whose train
  * has the single line. */
 static char day_book[DAYBOOK];
