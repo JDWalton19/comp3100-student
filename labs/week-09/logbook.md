@@ -12,18 +12,18 @@ means" — *I got the seal but I'm still fuzzy on why the second run
 differed* — beats a confident sentence you don't believe, and it tells
 me where to start when you bring it to studio.
 
-**Name:**
-**Week:**
+**Name:** JD Walton
+**Week:** 9
 **Work Order No.:**
-
+8 
 ## Milestone 1
 **What I did:**
-
+make -C check m1
 **Output or seal:**
-```
+``` ~~~ WAX SEAL of the Guild: 8F513B1B ~~~
 ```
 **What it means:**
-
+this one we show what is beening store in the termainal and we put the from the lowest value first in the stare 
 ## Milestone 2
 **What I did:**
 
