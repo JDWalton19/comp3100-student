@@ -45,9 +45,9 @@ make -C check m3
 
 ## Reflection
 
-1. **(Prompt 1 from the work order):**
+1. **(Prompt 1 from the work order):**A deadlock is like a traffic jam that needs four specific things to happen at once. If you remove even one of these four conditions (mutual exclusion, hold and wait, no resource preemption, or circular wait), the jam clears up because the cycle is broken.However, preventing these conditions has costs ,Breaking Mutual Exclusion: This is usually impossible. You can't have two threads sharing a physical resource like a printer (or a train lever) at the exact same time without causing a crash or data corruption.  Breaking Hold and Wait: If you force a program to grab every resource it will ever need before it even starts running, it hogs things it isn't using yet. This slows the whole system down and ruins concurrency.
 2. **(Prompt 2 from the work order):**
-
+I would choose prevention over recovery. If you rely on recovery, the system has to waste processing power constantly checking for deadlocks. Worse, if you force a program to drop a lock or quit to break the deadlock, you risk permanently corrupting your shared data. It is much safer and cleaner to design the system so it never gets stuck in the first place.
 ## Sources and help
 
 Anyone or anything that helped you this week — a classmate, a man page,
