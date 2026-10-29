@@ -27,29 +27,29 @@ A2: 263 0
 # one line: the oom-kill result from the governed run (or Monday's deck, if
 # your bench has no user systemd), and the MemoryMax figure. E.g.:
 #   A3: Failed with result 'oom-kill'; MemoryMax=64M
-A3:
+A3:Failed with result 'oom-kill'; MemoryMax=64M
 
 # A4 (Task 3) -- the keeper's owner, as the uid you read from its status (or
 # from getent passwd). One number.
-A4:
+A4:1849
 
 # A5 (Task 3) -- the walled-off room's shape: its permissions and its size,
 # and one sentence on why you could not read it as yourself. Copy the perms
 # exactly. E.g.:
 #   A5: ---p, 1024 KiB -- it belongs to another account, so its memory is
 #       walled off from mine without the house keys.
-A5:
+A5: ---p, 1024 Kib -- it belong to another account, so its memory is walled off from mine without the house keys.
 
 # A6 (Task 4) -- one neutral word from the record's opening lines, copied
 # exactly (proof you opened the room). Not the city's or the works' name --
 # a word only the record itself uses.
-A6:
+A6:uncut
 
 # A7 (Task 4) -- every year the record carries, and the desk the record
 # names. Every year and the desk, on the one line.
-A7:
+A7: 1830, 1848, 1849, desk K
 
 # A8 (Task 4) -- the two surnames the record attaches to that desk,
 # side by side, in either order. The record names two; write both. Draw no
 # conclusion -- what you make of it goes in your case notes, not here.
-A8:
+A8: KUREOS, THISTLEWOOD
