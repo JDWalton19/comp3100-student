@@ -20,7 +20,8 @@ me where to start when you bring it to studio.
 **What I did:**
 make -C check m1
 **Output or seal:**
-```  
+```  ~~~ WAX SEAL of the Guild: ECCC5D52 ~~~
+
 
 ```
 **What it means:**
