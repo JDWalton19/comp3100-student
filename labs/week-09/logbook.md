@@ -25,42 +25,44 @@ make -C check m1
 
 ```
 **What it means:**
-
+we saw how linux handle files name and indoes and link and succeessfully recover a delected files that was still helfd open by an active shell proccess
 ## Milestone 2
 **What I did:**
  make -C check m2
 **Output or seal:**
-``` 
+```  ~~~ WAX SEAL of the Guild: 8CFE54A2 ~~~
+
 ```
 **What it means:**
-
+We mounted the cabinet disk image read-only to safely inspect its ext2 file system properties, block size, and shared inode links without altering the evidence.
 ## Milestone 3
 **What I did:**
 make -C check m3
 
 **Output or seal:**
-``` 
+```  ~~~ WAX SEAL of the Guild: F7A8DA13 ~~~
 ```
 **What it means:**
-
+We analyzed the ledger files' modification timestamps to identify a forged entry that was written after the ledger hall's official closing time.
 ## Milestone 4
 **What I did:**
 make -C check m4
 
 **Output or seal:**
-```
+```~~~ WAX SEAL of the Guild: 7D1C68B7 ~~~
 
 ```
+
 **What it means:**
- we use the gbd to insept the debugger 
+We used debugfs to locate deleted inodes and successfully recovered the struck correspondence to uncover the Chief Computer's warnings about the Engine's rounding errors.
 > Fewer or more milestones this week? Copy a block above as needed.
 
 ## Reflection
 
 1. **(Prompt 1 from the work order):**
-
+When you use rm, it just deletes the file's name and lowers its link count. The file's inode and data blocks stay completely intact until the link count reaches zero and no programs are using it, which is when the space is finally freed. We could recover the memoranda because the cabinet is a frozen disk image where those freed blocks were left untouched. In contrast, your active home folder constantly writes new data and would immediately overwrite that free space.
 2. **(Prompt 2 from the work order):**
-
+If the cabinet had allowed writes, simply typing a careless command like touch note.txt could have permanently destroyed a memorandum. The file system would instantly reuse the deleted file's "freed" space to save your new file, overwriting the historical evidence forever. This proves exactly why you must always defend the habit of mounting forensic evidence as read-only.
 
 ## Sources and help
 
