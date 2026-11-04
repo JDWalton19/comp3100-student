@@ -23,7 +23,7 @@ make -C check m1
 ```~~~ WAX SEAL of the Guild: 5B79A45C ~~~
 ```
 **What it means:**
-
+Covers file descriptors (0, 1, 2), output and error redirection (>, >>, <, 2>, 2>&1, &>), and character device files in /dev along with their major and minor numbers.
 ## Milestone 2
 **What I did:**
 make -C check m2
@@ -31,7 +31,7 @@ make -C check m2
 ``` ~~~ WAX SEAL of the Guild: F8D8DAE5 ~~~
 ```
 **What it means:**
-
+creating and using FIFOs (named pipes) with mkfifo, observing how pipes buffer data, how multiple readers split a stream, and handling broken pipes (SIGPIPE).
 ## Milestone 3
 **What I did:**
 make -C check m3
@@ -39,7 +39,7 @@ make -C check m3
 ``` ~~~ WAX SEAL of the Guild: 7AFD0197 ~~~
 ```
 **What it means:**
-
+Covers inspecting an active pneumatic line, tracing standard output and file descriptors across living processes, and examining file permissions and process boundaries.
 ## Milestone 4
 **What I did:**
 
@@ -47,7 +47,7 @@ make -C check m3
 ```
 ```
 **What it means:**
-
+Covers using fuser, lsof, ps, and /proc/<pid>/cmdline to identify processes holding open files or tubes across different user accounts.
 > Fewer or more milestones this week? Copy a block above as needed.
 
 ## Reflection
