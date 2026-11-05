@@ -42,9 +42,9 @@ make -C check m3
 Covers inspecting an active pneumatic line, tracing standard output and file descriptors across living processes, and examining file permissions and process boundaries.
 ## Milestone 4
 **What I did:**
-
+make -C check m4
 **Output or seal:**
-```
+```  ~~~ WAX SEAL of the Guild: 304DF696 ~~~
 ```
 **What it means:**
 Covers using fuser, lsof, ps, and /proc/<pid>/cmdline to identify processes holding open files or tubes across different user accounts.
@@ -53,8 +53,9 @@ Covers using fuser, lsof, ps, and /proc/<pid>/cmdline to identify processes hold
 ## Reflection
 
 1. **(Prompt 1 from the work order):**
+When a command runs in the terminal, the kernel assigns standard handles called file descriptors to control its data streams: 0 for input, 1 for normal output, and 2 for error messages. The shell handles redirection from left to right, so 2>&1 > order.txt first points descriptor 2 to wherever descriptor 1 is currently pointing (your screen), and only then moves descriptor 1 to the file—leaving error messages displayed on your terminal. Reversing the order to > both.txt 2>&1 moves descriptor 1 to the file first, so when descriptor 2 is set to match it, both streams end up in the file. In yes | head -1, the shell connects the output of yes to head using a pipe, which relies on an in-memory kernel buffer; as soon as head reads one line and terminates, the receiving end of the pipe closes, causing the kernel to send a SIGPIPE signal that stops yes from running forever.
 2. **(Prompt 2 from the work order):**
-
+Limiting access to a process's table of open files while keeping its command-line visible strikes the right balance between security and system transparency on a shared machine. Displaying the command line and basic process metadata allows users to monitor overall system activity and identify resource-heavy jobs without exposing sensitive information. Restricting the open file table to the process owner prevents unauthorized users from inspecting private data paths, viewing unlinked files, or tampering with active file descriptors.
 ## Sources and help
 
 Anyone or anything that helped you this week — a classmate, a man page,
