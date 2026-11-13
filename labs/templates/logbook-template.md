@@ -12,10 +12,10 @@ means" — *I got the seal but I'm still fuzzy on why the second run
 differed* — beats a confident sentence you don't believe, and it tells
 me where to start when you bring it to studio.
 
-**Name:**
-**Week:**
+**Name:**JD Walton
+**Week:** 13
 **Work Order No.:**
-
+12
 ## Milestone 1
 **What I did:**
 
